@@ -1,103 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndecisionApp from './components/IndecisionApp';
+import { BrowserRouter, Route } from "react-router-dom";
+
 import 'normalize.css/normalize.css'
 import './styles/styles.scss';
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+const ExpenseDashboardPage = () => (
+    <div>
+        This is from Expense Dashboard Component
+    </div>
+);
 
-// IndecisionApp.defaultProps = {
-//     optionsArray: []
-// }
+const AddExpense = () => (
+    <div>
+        This is from Add Expense Component
+    </div>
+);
 
-// class Header extends React.Component {
-//     render(){
-//         return(
-//             <div>
-//                 <h1>{this.props.title}</h1>
-//                 <h2>{this.props.subtitle}</h2>
-//             </div>
-//         );
-//     }
-// }
+const EditExpense = () => (
+    <div>
+        This is from Edit Expense Component
+    </div>
+);
 
+const Help = () => (
+    <div>
+        This is from Help Component
+    </div>
+)
 
-// class Action extends React.Component {
-//     render(){
-//         return(
-//             <div>
-//                 <button onClick={this.props.handlePick} disabled={!(this.props.hasOptions)}>
-//                     What should I do?
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
+const routes = (
+    <BrowserRouter>
+        <div>
+            <Route path="/" component={ExpenseDashboardPage} exact={true} />
+            <Route path="/create" component={AddExpense} />
+            <Route path="/edit" component={EditExpense} />
+            <Route path="/help" component={Help} />
+        </div>
+    </BrowserRouter>
+);
 
-
-// class Options extends React.Component {
-//     render(){
-//         return(
-//             <div>
-//                 <button onClick={this.props.handleDeleteOptions}>Remove All</button>
-//                 <p>The list of the components of the array are: </p>
-//                 {
-//                     this.props.options.map((opt) => <Option key={opt} optionText={opt} />)
-//                 }
-//             </div>
-//         );
-//     }
-// }
-
-
-// class Option extends React.Component {
-//     render(){
-//         return(
-//             <div>
-//                 {this.props.optionText}
-//             </div>
-//         );
-//     }
-// }
-
-
-
-// Stateless Functional Component Pattern
-// const User = (props) => {
-//     return(
-//         <div>
-//             <p>Name: {props.name}</p>
-//             <p>Age: {props.age}</p>
-//         </div>
-//     );
-// }
-
-// ReactDOM.render(<User name="Aniruddh" age={18} />, document.getElementById('app'));
-
-// -------------------------------------------------------------------------------------
-
-// Understanding ES6 Class Properties
-// class OldSyntax {
-//     constructor(){
-//         this.name = 'Mike';
-//         this.getGreeting = this.getGreeting.bind(this);
-//     }
-//     getGreeting(){
-//         return `Hi! My name is ${this.name}`
-//     }
-// }
-// const oldSyntax = new OldSyntax;
-// const getGreeting = oldSyntax.getGreeting;
-// console.log(getGreeting());
-
-// //--------------------------------
-
-// class NewSyntax {
-//     name = 'Nick';
-//     getGreeting = () => {
-//         return `Hi! My name is ${this.name}`
-//     }
-// }
-// const newSyntax = new NewSyntax;
-// const newGetGreeting = newSyntax.getGreeting;
-// console.log(newGetGreeting());
+ReactDOM.render(routes, document.getElementById('app'));
